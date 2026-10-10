@@ -10,12 +10,13 @@ classifer_dictionary = {
     "CCard": "\d{16}"
     }
 
-#Completed the first iteration of the line scanner, matches found for
+#Completed the first iteration of the line scanner, matches found for dictionaries
 
-def line_scanner(text,linenumber):
+def line_scanner(text):
     match_found = 0
-    for char in text:
-        if char[3] == '-' and char[6] == '-':
-           match_found += 1
+    
+    if len(text) == 11 and text[3] == '-' and text[6] == '-':
+            match_found += 1
+    print(match_found)
         
-
+print(line_scanner("923-12-2222"))
