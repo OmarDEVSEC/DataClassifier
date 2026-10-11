@@ -3,6 +3,9 @@
 # Opens a file, reads it line by line
 
 
+# Put in the r "raw" prefix before the regex, becuase python is flagging it, It will be used in the 
+# Future.
+
 classifer_dictionary = {
     "ssn": r"\d{3}-\d{2}-\d{4}",
     "AWSKey": r"AKIA\w{16}",
@@ -12,12 +15,22 @@ classifer_dictionary = {
 
 #Completed the first iteration of the line scanner, matches found for dictionaries
 
+#Second iteration fo the line scanner is complete, nested if statement checking the conditions are met
+# of a text for it to be SSN.
+
 def line_scanner(text):
-    match_found = 0
+    ssn_found = 0
+    dob_found = 0
     if len(text) == 11:
           if text[3] == '-' and text[6] == '-':
             if (text[0:3] + text[4:6] + text[7:11]).isdigit():
-             match_found += 1
-          print(match_found)
-        
-print(line_scanner("923-12-2222"))
+             ssn_found += 1
+    
+    if len(text) == 10:
+       if (text[2] == '/' or text[2] == '-') and (text[5] == '/' or text[5] == '-'):
+          if (text[0:2]+ text[3:5]+ text[6:10]).isdigit():
+             dob_found += 1 
+    
+    return f"Amount of SSNs: {ssn_found}\n Amount of DOBs: {dob_found}" 
+
+print(line_scanner(text = "923-12-2222, 09/23/2007"))
