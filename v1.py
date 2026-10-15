@@ -16,28 +16,6 @@ classifer_dictionary = {
 #Completed the first iteration of the line scanner, matches found for dictionaries
 
 
-
-# def line_scanner(text):
-#     ssn_found = 0
-#     dob_found = 0
-#     if len(text) == 11:
-#           if text[3] == '-' and text[6] == '-':
-#             if (text[0:3] + text[4:6] + text[7:11]).isdigit():
-#              ssn_found += 1
-    
-#     if len(text) == 10:
-#        if (text[2] == '/' or text[2] == '-') and (text[5] == '/' or text[5] == '-'):
-#           if (text[0:2]+ text[3:5]+ text[6:10]).isdigit():
-#              dob_found += 1 
-    
-#     return f"Amount of SSNs: {ssn_found}\n Amount of DOBs: {dob_found}" 
-
-# print(line_scanner(text = "923-12-2222, 09/23/2007"))
-
-
-
-#Modified second intteration of the line scanner, scanning any text in a file and returning what is needed to be matched
-
 def line_scanner2(text):
    ssn_found = 0
    for i in range(0,len(text) - 10):     #Non hardcoded numbers, adapts easily and doesnt break if condition is not met
@@ -48,14 +26,20 @@ def line_scanner2(text):
    dob_found = 0
    for i in range(0,len(text) - 9):
       chunk = text[i:i+10]
+      month_str = chunk[0:2]
+      day_str = chunk[3:5]
+      year_str = chunk[6:10]
+
       if (chunk[2] == '-' or chunk[2] == '/') and (chunk[5] == '-' or chunk[5] == '/'):
-          if(chunk[0:2]+chunk[3:5]+chunk[6:10]).isdigit():
-              print(chunk)
-              dob_found += 1 
+          if month_str.isdigit() and day_str.isdigit() and year_str.isdigit():
+              month = int(month_str)
+              day = int(day_str)
+              if 1 <= month <= 12 and 1 <= day <= 31:
+               dob_found += 1 
    return f"Amount of SSNs: {ssn_found}\n" f"Amount of DOBs: {dob_found}"
 
-    
 
-print(line_scanner2(text = "09/23/2007, 003-45-2134"))
 
-#
+print(line_scanner2(text="06/07/1981,07/08/1981,08/09/1981,09/10/1981,489-36-8350,690-05-5315,12-20-6833"))
+
+"""Version 1 of the line scanner can only detect two digit dates of days and months."""
