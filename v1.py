@@ -35,7 +35,14 @@ def line_scanner2(text):
               month = int(month_str)
               day = int(day_str)
               if 1 <= month <= 12 and 1 <= day <= 31:
-               dob_found += 1 
+               dob_found += 1
+
+   awskey_found = 0
+
+   for i in range(0,len(text) - 19):
+       chunk = text[i:i+20]
+
+   
    return f"Amount of SSNs: {ssn_found}\n" f"Amount of DOBs: {dob_found}"
 
 
@@ -43,3 +50,4 @@ def line_scanner2(text):
 print(line_scanner2(text="06/07/1981,07/08/1981,08/09/1981,09/10/1981,489-36-8350,690-05-5315,12-20-6833"))
 
 """Version 1 of the line scanner can only detect two digit dates of days and months."""
+
