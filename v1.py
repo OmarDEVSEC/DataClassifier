@@ -41,13 +41,19 @@ def line_scanner2(text):
 
    for i in range(0,len(text) - 19):
        chunk = text[i:i+20]
+       if (chunk[0:4] == "AKIA" and chunk[4:20].isalnum()): 
+           awskey_found += 1
 
+
+   cc_found = 0
+   for i in range(0,len(text) - 15):
+       chunk = text[i:i+16]
    
-   return f"Amount of SSNs: {ssn_found}\n" f"Amount of DOBs: {dob_found}"
+   return f"Amount of SSNs: {ssn_found}\n" f"Amount of DOBs: {dob_found}\n" f"Amount of Keys: {awskey_found}"
 
 
 
-print(line_scanner2(text="06/07/1981,07/08/1981,08/09/1981,09/10/1981,489-36-8350,690-05-5315,12-20-6833"))
+print(line_scanner2(text="06/07/1981,07/08/1981,08/09/1981,09/10/1981,489-36-8350,690-05-5315,12-20-6833,AKIAIOSFODNN7EXAMPLE"))
 
 """Version 1 of the line scanner can only detect two digit dates of days and months."""
 
