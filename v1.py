@@ -68,5 +68,8 @@ def ssn_scanner(text):
     for i in range(0, len(text) - 10):
         chunk = text[i:i+11]
         if chunk[3] == '-' and chunk[6] == '-':
-            ssn1_found += 1
+            if (chunk[0:3] + chunk[4:6] + chunk[7:11]).isdigit():
+               ssn1_found += 1
+    return f"Amount of SSN found: {ssn1_found}"
 
+print(ssn_scanner("672-22-3334"))
