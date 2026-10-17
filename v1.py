@@ -72,7 +72,7 @@ def ssn_scanner(text):
                ssn1_found += 1
     return ssn1_found
 
-print(ssn_scanner("672-22-3334"))
+
 
 def dob_scanner(text):
     dob1_found = 0
@@ -87,8 +87,8 @@ def dob_scanner(text):
                 day = int(day_str1)
                 if 1 <= month <= 12 and 1 <= day <= 31:
                     dob1_found += 1
-        return dob1_found
-print(dob_scanner("10/23/2023"))
+    return dob1_found
+
 
 def awskey_scanner(text):
     awskey_found1 = 0
@@ -97,7 +97,7 @@ def awskey_scanner(text):
         if chunk[0:4] == "AKIA" and chunk[5:20].isalnum():
             awskey_found1 += 1
     return awskey_found1
-print(awskey_scanner("AKIAIOSFODNN7EXAMPLE"))
+
 
 def ccnum_scanner1(text):
     cnum_found1 = 0
@@ -106,4 +106,16 @@ def ccnum_scanner1(text):
         if chunk[0:17].isdigit():
             cnum_found1 += 1
     return cnum_found1
-print(ccnum_scanner1("4929381332664295"))
+
+
+"""Second iteration: Each info type now has its own function, following single responbility practice
+"""
+
+def call_scanner(text):
+    ssn_count = ssn_scanner(text)
+    dob_count = dob_scanner(text)
+    awskey_count = awskey_scanner(text)
+    cardnumber_count = ccnum_scanner1(text)
+
+    return f"Amount of SSNs: {ssn_count}\nAmount of DOBs: {dob_count}\nAmount of AWS Keys: {awskey_count}\nAmount of Card Numbers: {cardnumber_count}"
+print(call_scanner("4929381332664295, AKIAIOSFODNN7EXAMPLE,10/23/2023, 672-22-3334"))
