@@ -70,7 +70,7 @@ def ssn_scanner(text):
         if chunk[3] == '-' and chunk[6] == '-':
             if (chunk[0:3] + chunk[4:6] + chunk[7:11]).isdigit():
                ssn1_found += 1
-    return f"Amount of SSN found: {ssn1_found}"
+    return ssn1_found
 
 print(ssn_scanner("672-22-3334"))
 
@@ -87,7 +87,7 @@ def dob_scanner(text):
                 day = int(day_str1)
                 if 1 <= month <= 12 and 1 <= day <= 31:
                     dob1_found += 1
-        return f"Amount of DOBs found: {dob1_found}"
+        return dob1_found
 print(dob_scanner("10/23/2023"))
 
 def awskey_scanner(text):
@@ -96,7 +96,7 @@ def awskey_scanner(text):
         chunk = text[i:i+20]
         if chunk[0:4] == "AKIA" and chunk[5:20].isalnum():
             awskey_found1 += 1
-    return f"Amount of API Keys found: {awskey_found1}"
+    return awskey_found1
 print(awskey_scanner("AKIAIOSFODNN7EXAMPLE"))
 
 def ccnum_scanner1(text):
@@ -105,5 +105,5 @@ def ccnum_scanner1(text):
         chunk = text[i:i+16]
         if chunk[0:17].isdigit():
             cnum_found1 += 1
-    return f"Card number found: {cnum_found1}"
+    return cnum_found1
 print(ccnum_scanner1("4929381332664295"))
