@@ -99,10 +99,11 @@ def awskey_scanner(text):
     return f"Amount of API Keys found: {awskey_found1}"
 print(awskey_scanner("AKIAIOSFODNN7EXAMPLE"))
 
-def ccnume_scanner1(text):
+def ccnum_scanner1(text):
     cnum_found1 = 0
     for i in range(0,len(text) - 15):
         chunk = text[i:i+16]
-        if chunk.isdigit():
+        if chunk[0:17].isdigit():
             cnum_found1 += 1
     return f"Card number found: {cnum_found1}"
+print(ccnum_scanner1("4929381332664295"))
