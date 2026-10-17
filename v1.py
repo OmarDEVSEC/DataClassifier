@@ -89,3 +89,12 @@ def dob_scanner(text):
                     dob1_found += 1
         return f"Amount of DOBs found: {dob1_found}"
 print(dob_scanner("10/23/2023"))
+
+def awskey_scanner(text):
+    awskey_found1 = 0
+    for i in range(0,len(text) - 19):
+        chunk = text[i:i+20]
+        if chunk[0:4] == "AKIA" and chunk[5:20].isalnum():
+            awskey_found1 += 1
+    return f"Amount of API Keys found: {awskey_found1}"
+print(awskey_scanner("AKIAIOSFODNN7EXAMPLE"))
