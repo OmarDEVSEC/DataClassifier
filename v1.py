@@ -73,3 +73,19 @@ def ssn_scanner(text):
     return f"Amount of SSN found: {ssn1_found}"
 
 print(ssn_scanner("672-22-3334"))
+
+def dob_scanner(text):
+    dob1_found = 0
+    for i in range(0,len(text) - 9):
+        chunk = text[i:i+10]
+        month_str1 = chunk[0:2]
+        day_str1 = chunk[3:5]
+        year_str1 = chunk[6:10]
+        if (chunk[2]== '-' or chunk[2] == '/' and chunk[5] == '2' or chunk[5] == '/'):
+            if month_str1.isdigit() and day_str1.isdigit() and year_str1.isdigit():
+                month = int(month_str1)
+                day = int(day_str1)
+                if 1 <= month <= 12 and 1 <= day <= 31:
+                    dob1_found += 1
+        return f"Amount of DOBs found: {dob1_found}"
+print(dob_scanner("10/23/2023"))
