@@ -86,10 +86,10 @@ def file_scan(file_name):
 
     with open(file_name) as f:
         for line in f:
-          call_scanner(line)
-          ssn_count += total_ssn
-          dob_count += total_dob
-          awskey_count += total_awskey
-          cardnumber_count += total_cardnum
-          
-           
+          runscan = call_scanner(line)
+          ssn_count =+ total_ssn
+          dob_count =+ total_dob
+          awskey_count =+ total_awskey
+          cardnumber_count =+ total_cardnum
+        return f"Sensitive data found in: {file_name}\n Sensitive Content by Category: SSN:{total_ssn}, DOB:{total_dob}, AWS Key:{total_awskey}, Card Numbers:{total_cardnum}" 
+
