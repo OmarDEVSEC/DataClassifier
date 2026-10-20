@@ -79,17 +79,22 @@ def call_scanner(text):
 print(call_scanner("4929381332664295, AKIAIOSFODNN7EXAMPLE,10/23/2023, 672-22-3334"))
 
 def file_scan(file_name):
+    #Scans the file line by line and will return a summary of sensitive data found
+    #Produces a running total of sensitive info type found
     total_ssn = 0
     total_dob = 0
     total_awskey = 0
     total_cardnum = 0
 
+    #'with' closes the file automatically, even if an error occurs
     with open(file_name) as f:
+        #Reads one line at a time, large files don't load fully into memory
         for line in f:
+          #call_scanner returns a tuple: ssn, dob, awskey, cardnum
           runscan = call_scanner(line)
-          ssn_count =+ total_ssn
-          dob_count =+ total_dob
-          awskey_count =+ total_awskey
-          cardnumber_count =+ total_cardnum
+          total_ssn += runscan[0]
+          total_dob += runscan[1]
+          total_awskey += runscan[2]
+          total_cardnum += runscan[3]
         return f"Sensitive data found in: {file_name}\n Sensitive Content by Category: SSN:{total_ssn}, DOB:{total_dob}, AWS Key:{total_awskey}, Card Numbers:{total_cardnum}" 
 
