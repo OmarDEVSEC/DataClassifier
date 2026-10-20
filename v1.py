@@ -1,10 +1,7 @@
 
-# Function 1 the start of the pipeline
-# Opens a file, reads it line by line
 
 
-# Put in the r "raw" prefix before the regex, becuase python is flagging it, It will be used in the 
-# Future.
+import os
 
 classifer_dictionary = {
     "ssn": r"\d{3}-\d{2}-\d{4}",
@@ -76,7 +73,7 @@ def call_scanner(text):
     cardnumber_count = ccnum_scanner1(text)
 
     return (ssn_count, dob_count, awskey_count, cardnumber_count)
-print(call_scanner("4929381332664295, AKIAIOSFODNN7EXAMPLE,10/23/2023, 672-22-3334"))
+
 
 def file_scan(file_name):
     #Scans the file line by line and will return a summary of sensitive data found
@@ -96,5 +93,13 @@ def file_scan(file_name):
           total_dob += runscan[1]
           total_awskey += runscan[2]
           total_cardnum += runscan[3]
-        return f"Sensitive data found in: {file_name}\n Sensitive Content by Category: SSN:{total_ssn}, DOB:{total_dob}, AWS Key:{total_awskey}, Card Numbers:{total_cardnum}" 
+        return f"Sensitive data found in: {file_name}\nSensitive Content by Category: SSN:{total_ssn}, DOB:{total_dob}, AWS Key:{total_awskey}, Card Numbers:{total_cardnum}" 
 
+print(file_scan("test.txt"))
+
+
+def directory_scan(folder_name):
+    file_list = os.listdir(folder_name)
+    for f in file_list:
+        runscan = file_scan(f)
+    return runscan
