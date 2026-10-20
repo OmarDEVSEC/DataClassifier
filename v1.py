@@ -75,5 +75,21 @@ def call_scanner(text):
     awskey_count = awskey_scanner(text)
     cardnumber_count = ccnum_scanner1(text)
 
-    return f"Amount of SSNs: {ssn_count}\nAmount of DOBs: {dob_count}\nAmount of AWS Keys: {awskey_count}\nAmount of Card Numbers: {cardnumber_count}"
+    return (ssn_count, dob_count, awskey_count, cardnumber_count)
 print(call_scanner("4929381332664295, AKIAIOSFODNN7EXAMPLE,10/23/2023, 672-22-3334"))
+
+def file_scan(file_name):
+    total_ssn = 0
+    total_dob = 0
+    total_awskey = 0
+    total_cardnum = 0
+
+    with open(file_name) as f:
+        for line in f:
+          call_scanner(line)
+          ssn_count += total_ssn
+          dob_count += total_dob
+          awskey_count += total_awskey
+          cardnumber_count += total_cardnum
+          
+           
