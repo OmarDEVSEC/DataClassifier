@@ -100,8 +100,23 @@ print(file_scan("test.txt"))
 
 #Skeleton of the directory scan
 def directory_scan(folder_name):
+    #Scans every file in a folder and prints one summary per file.
+    # Uses file_scan() for the per-file work, so this function only handles the folder.
+
+    # listdir returns the bare namees only (no folder path). so paths get built below
     file_list = os.listdir(folder_name)
     
+    
     for file in file_list:
-     runscan = file_scan(os.path.join(folder_name, file))
-    return runscan
+
+     # join folder + name so file_scan can find the file from any working directory
+     full_path = os.path.join(folder_name, file)
+
+     #Skips subfolders and anything else that isn't a regular file;
+     #opening a folder as text would crash the scan
+     if os.path.isfile(full_path):
+         result = file_scan(full_path)
+
+         #Print per file so earlier results aren't overwritten by later ones.
+         print(result)
+     
