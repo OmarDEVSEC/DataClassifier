@@ -95,7 +95,7 @@ def file_scan(file_name):
           total_cardnum += runscan[3]
         return f"Sensitive data found in: {file_name}\nSensitive Content by Category: SSN:{total_ssn}, DOB:{total_dob}, AWS Key:{total_awskey}, Card Numbers:{total_cardnum}" 
 
-print(file_scan("test.txt"))
+
 
 
 #Skeleton of the directory scan
@@ -119,4 +119,4 @@ def directory_scan(folder_name):
 
          #Print per file so earlier results aren't overwritten by later ones.
          print(result)
-     
+directory_scan("testinfodir")

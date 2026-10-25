@@ -1,0 +1,9 @@
+Employee record: Jane Smith, SSN 123-45-6789, DOB 04/12/1985
+Payment on file: card 4929381332664295 exp 11/27
+aws_access_key_id = AKIAIOSFODNN7EXAMPLE
+Nothing sensitive here, just a meeting note for 3pm.
+Two people on one line: 672-22-3334 and 489-36-8350
+Birthdays: 12/25/1990 and 07/04/1976
+
+Card with dashes: 4929-3813-3266-4295
+Short date: 6/7/1981

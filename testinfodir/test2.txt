@@ -1,0 +1,11 @@
+Name: Alex Rivera | SSN 913-52-8841 | DOB 03/14/1992
+Name: Priya Nair | SSN 925-17-3302 | DOB 11/30/1978
+Name: Marcus Cole | SSN 947-60-1195 | DOB 08-22-2001
+Name: Dana Whitfield | SSN 958-04-7726 | DOB 01/05/1989
+Terminated: Lee Park, DOB 12/09/1965, SSN 971-33-5018
+
+Deploy config: aws_access_key_id = AKIAI44QH8DHBEXAMPLE
+Backup account key: AKIA1B2C3D4E5F6G7H8I (rotate quarterly)
+Test card for sandbox: 4242424242424242
+Refund test card 5555555555554444 and 4111111111111111
+Ticket #4821: user reports login failures after 2pm
