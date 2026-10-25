@@ -101,6 +101,7 @@ print(file_scan("test.txt"))
 #Skeleton of the directory scan
 def directory_scan(folder_name):
     file_list = os.listdir(folder_name)
-    runscan = file_scan(os.path.join(folder_name, file))
+    
     for file in file_list:
-     return runscan
+     runscan = file_scan(os.path.join(folder_name, file))
+    return runscan
